@@ -1,0 +1,17 @@
+Admin
+  *Menu Data Master
+      -Data Admin    -> cms_users
+      -Data Member   -> member
+      -Data Provinsi
+      -Data Kota
+      -Data Kategori Produk  -> kategori
+      -Data Produk   -> produk (join dari kategori)
+
+  *Menu Data Transaksi
+      -Data Orders   -> member yang udah orders tp blom bayar 
+      -Data Konfirmasi Pembayaran  -> yang udh transfer tp belom konfirms sm adminnya
+      -Transaksi Selesai -> udah dikonfirms
+      -Rating dan Ulasan  -> ketika udh kelar ngasih rating ulasan
+
+  *Menu Data Laporan
+      -Laporan Penjualan
