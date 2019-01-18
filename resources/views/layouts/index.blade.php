@@ -79,8 +79,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="top-right">
 					<ul>
 						<li><a href="checkout.html">Checkout</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="registered.html"> Create Account </a></li>
+						<li><a href="{{ route('admin.login') }}">Login</a></li>
+						<li><a href="{{ route('admin.register') }}"> Create Account </a></li>
+						<li><a href="{{ route('logout') }}"onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"> Logout </a></li>
+                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
 					</ul>
 					</div>
 					<div class="clearfix"></div>
@@ -199,7 +205,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="cart box_1">
 								<a href="checkout.html">
 									<h3> <div class="total">
-										<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
+										<span class="">Rp. {{number_format(Auth::user()->Total(),0)}}</span>({{Auth::user()->Keranjang()->count()}}items)</div>
 										<a href="{{ route('admin.checkout') }}"><img src="images/bag.png" alt="" /></a>
 									</h3>
 								</a>

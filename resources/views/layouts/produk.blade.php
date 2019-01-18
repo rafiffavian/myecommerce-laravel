@@ -37,6 +37,7 @@
 										<input type="hidden" name="id_produk" value="{{$item->id}}">
 										<span class="size">{{$item->berat}} kg</span>
 										<p ><del>$100.00</del><em class="item_price">Rp. {{$item->harga}}</em></p>
+										<input type="number" name="quantity" style="margin-bottom: 5px;" required="" placeholder="Jumlah" class="form-control">
 										<button data-text="Add To Cart" class="my-cart-b item_add" type="submit">Add To Cart</button>
 										{{-- <a href="#" data-text="Add To Cart" class="my-cart-b item_add"></a> --}}
 									</div>

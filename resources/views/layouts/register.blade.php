@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>New ShopS a E-Commerce Online Shopping Category Flat Bootstrap Responsive Website Template | Checkout :: w3layouts</title>
+<title>New Shop a E-Commerce Online Shopping Category Flat Bootstrap Responsive Website Template | Registered :: w3layouts</title>
 <!--css-->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
  <!--mycart-->
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
- <!-- cart -->
+<!-- cart -->
 <script src="js/simpleCart.min.js"></script>
 <!-- cart -->
 </head>
@@ -43,8 +43,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="top-right">
 					<ul>
 						<li><a href="checkout.html">Checkout</a></li>
-						<li><a href="{{ route('admin.login') }}">Login</a></li>
-						<li><a href="{{ route('admin.register') }}"> Create Account </a></li>
+						<li><a href="login.html">Login</a></li>
+						<li><a href="registered.html"> Create Account </a></li>
 					</ul>
 					</div>
 					<div class="clearfix"></div>
@@ -69,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div> 
 							<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="{{route('admin.index')}}" class="act">Home</a></li>	
+									<li class="active"><a href="index.html" class="act">Home</a></li>	
 									<!-- Mega Menu -->
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>
@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												</div>
 												<div class="col-sm-3  multi-gd-img">
 													<ul class="multi-column-dropdown">
-														<h6>Submenu 2</h6>
+														<h6>Submenu2</h6>
 														<li><a href="products.html">Sunglasses</a></li>
 														<li><a href="products.html">Wallets,Bags</a></li>
 														<li><a href="products.html">Footwear</a></li>
@@ -180,53 +180,94 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--banner-->
 		<div class="banner1">
 			<div class="container">
-				<h3><a href="index.html">Home</a> / <span>Checkout</span></h3>
+				<h3><a href="index.html">Home</a> / <span>Registered</span></h3>
 			</div>
 		</div>
 	<!--banner-->
 
 	<!--content-->
-	@yield('checkout')
-		{{-- <div class="content">
-			<div class="cart-items">
-				<div class="container">
-					 <h2>My Shopping Bag (3)</h2>
-						<script>$(document).ready(function(c) {
-							$('.close1').on('click', function(c){
-								$('.cart-header').fadeOut('slow', function(c){
-									$('.cart-header').remove();
-								});
-								});	  
-							});
-					   </script>
-					 <div class="cart-header">
-						 <div class="close1"> </div>
-						 <div class="cart-sec simpleCart_shelfItem">
-								<div class="cart-item cyc">
-									 <img src="images/p15.jpg" class="img-responsive" alt="">
-								</div>
-							   <div class="cart-item-info">
-								<h3><a href="#"> Lorem Ipsum is not simply </a><span>Pickup time:</span></h3>
-								<ul class="qty">
-									<li><p>Min. order value:</p></li>
-									<li><p>FREE delivery</p></li>
-								</ul>
-									 <div class="delivery">
-									 <p>Service Charges : $10.00</p>
-									 <span>Delivered in 1-1:30 hours</span>
-									 <div class="clearfix"></div>
-								</div>	
-							   </div>
-							   <div class="clearfix"></div>
-													
-						  </div>
-					 </div>
-					
+		<div class="content">
+				<!--login-->
+			<div class="login">
+		<div class="main-agileits">
+				<div class="form-w3agile form1">
+					<h3>Register</h3>
+					<form action="{{route('admin.register.store')}}" method="post">
+						@csrf
+						@include('layouts.error-form')
+						<div class="key">
+							<i class="fa fa-user" aria-hidden="true"></i>
+							<input  type="text" value="{{old('nama')}}" name="nama" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nama';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-user" aria-hidden="true"></i>
+							<input  type="text" value="{{old('username')}}" name="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<input  type="text" value="{{old('email')}}" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+							<input  type="phone" placeholder="Phone" value="{{old('no_telp')}}" name="no_telp" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-folder" aria-hidden="true"></i>
+							<input  type="text" placeholder="Kode Pos" value="{{old('kode_pos')}}" name="kode_pos" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+							<input  type="password" value="" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+							<input  type="password" value="" name="password_confirmation" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Confirm Password';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-home" aria-hidden="true"></i>
+							<input  type="text" value="{{old('kecamatan')}}" placeholder="Kecamatan" name="kecamatan" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-home" aria-hidden="true">&nbsp;Provinsi</i>
+							<select name="id_provinsi" class="form-control" id="">
+								@foreach(App\Master_provinsi::all() as $item)
+									<option value="{{$item->id}}">{{$item->nama}}</option>
+								@endforeach	
+							</select>
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-home" aria-hidden="true">&nbsp;Kota</i>
+							<select name="id_kota" class="form-control" id="">
+								@foreach(App\Master_kota::all() as $item)
+									<option value="{{$item->id}}">{{$item->nama}}</option>
+								@endforeach	
+							</select>
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-home" aria-hidden="true"></i>
+							<textarea name="alamat" class="form-control" placeholder="Alamat" id="" cols="30" rows="10"></textarea>
+							<div class="clearfix"></div>
+						</div>
+						<input type="submit" value="Submit">
+					</form>
 				</div>
+				
 			</div>
-	<!-- checkout -->	
-		</div> --}}
-					<!---footer--->
+		</div>
+				<!--login-->
+		</div>
+		<!--content-->
+		<!---footer--->
 					<div class="footer-w3l">
 						<div class="container">
 							<div class="footer-grids">
@@ -287,5 +328,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				<!--copy-->
 				
+
 </body>
 </html>

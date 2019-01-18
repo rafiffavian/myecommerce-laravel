@@ -10,6 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = "member";
+
     /**
      * The attributes that are mass assignable.
      *
@@ -27,4 +29,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function Keranjang()
+    {
+        return $this->hasMany(Keranjang::class,'id_member');
+    }
+    public function Total()
+    {
+        $total = 0;
+        foreach ($this->Keranjang()->get() as $key) {
+            $total+= $key->quantity*$key->Produk->harga;
+        }
+        return $total;
+    }
 }

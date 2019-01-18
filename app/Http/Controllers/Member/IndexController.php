@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Keranjang;
 use App\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -19,9 +20,9 @@ class IndexController extends Controller
     { 
     	$requestData = new Keranjang;
 
-		$requestData['id_member'] = 1;
-    	$requestData['quantity'] = 1;
-    	$requestData['id_produk'] = $request->id_produk; 
+		$requestData['id_member'] = Auth::user()->id;
+        $requestData['id_produk'] = $request->id_produk; 
+    	$requestData['quantity'] = $request->quantity; 
 
     	$requestData->save();
 

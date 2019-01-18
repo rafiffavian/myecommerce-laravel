@@ -8,7 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>New ShopS a E-Commerce Online Shopping Category Flat Bootstrap Responsive Website Template | Checkout :: w3layouts</title>
+<title>New Shop a E-Commerce Online Shopping Category Flat Bootstrap Responsive Website Template | Login :: w3layouts</title>
 <!--css-->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -43,8 +43,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="top-right">
 					<ul>
 						<li><a href="checkout.html">Checkout</a></li>
-						<li><a href="{{ route('admin.login') }}">Login</a></li>
-						<li><a href="{{ route('admin.register') }}"> Create Account </a></li>
+						<li><a href="login.html">Login</a></li>
+						<li><a href="registered.html"> Create Account </a></li>
 					</ul>
 					</div>
 					<div class="clearfix"></div>
@@ -69,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div> 
 							<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 								<ul class="nav navbar-nav">
-									<li class="active"><a href="{{route('admin.index')}}" class="act">Home</a></li>	
+									<li class="active"><a href="index.html" class="act">Home</a></li>	
 									<!-- Mega Menu -->
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women<b class="caret"></b></a>
@@ -180,53 +180,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--banner-->
 		<div class="banner1">
 			<div class="container">
-				<h3><a href="index.html">Home</a> / <span>Checkout</span></h3>
+				<h3><a href="index.html">Home</a> / <span>Login</span></h3>
 			</div>
 		</div>
 	<!--banner-->
 
 	<!--content-->
-	@yield('checkout')
-		{{-- <div class="content">
-			<div class="cart-items">
-				<div class="container">
-					 <h2>My Shopping Bag (3)</h2>
-						<script>$(document).ready(function(c) {
-							$('.close1').on('click', function(c){
-								$('.cart-header').fadeOut('slow', function(c){
-									$('.cart-header').remove();
-								});
-								});	  
-							});
-					   </script>
-					 <div class="cart-header">
-						 <div class="close1"> </div>
-						 <div class="cart-sec simpleCart_shelfItem">
-								<div class="cart-item cyc">
-									 <img src="images/p15.jpg" class="img-responsive" alt="">
-								</div>
-							   <div class="cart-item-info">
-								<h3><a href="#"> Lorem Ipsum is not simply </a><span>Pickup time:</span></h3>
-								<ul class="qty">
-									<li><p>Min. order value:</p></li>
-									<li><p>FREE delivery</p></li>
-								</ul>
-									 <div class="delivery">
-									 <p>Service Charges : $10.00</p>
-									 <span>Delivered in 1-1:30 hours</span>
-									 <div class="clearfix"></div>
-								</div>	
-							   </div>
-							   <div class="clearfix"></div>
-													
-						  </div>
-					 </div>
-					
+		<div class="content">
+				<!--login-->
+			<div class="login">
+				<div class="main-agileits">
+					<div class="form-w3agile">
+						<h3>Login To New Shop</h3>
+						<form action="{{ route('admin.login.auth') }}" method="post">
+							@csrf
+							@include('layouts.error-form')
+							<div class="key">
+								<i class="fa fa-envelope" aria-hidden="true"></i>
+								<input  type="text" value="Email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+								<div class="clearfix"></div>
+							</div>
+							<div class="key">
+								<i class="fa fa-lock" aria-hidden="true"></i>
+								<input  type="password" value="Password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">
+								<div class="clearfix"></div>
+							</div>
+							<input type="submit" value="Login">
+						</form>
+					</div>
+					<div class="forg">
+						<a href="#" class="forg-left">Forgot Password</a>
+						<a href="{{ route('admin.register') }}" class="forg-right">Register</a>
+					<div class="clearfix"></div>
+					</div>
 				</div>
 			</div>
-	<!-- checkout -->	
-		</div> --}}
-					<!---footer--->
+				<!--login-->
+		</div>
+		<!--content-->
+		<!---footer--->
 					<div class="footer-w3l">
 						<div class="container">
 							<div class="footer-grids">
@@ -286,6 +278,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 				<!--copy-->
-				
 </body>
 </html>
