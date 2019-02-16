@@ -1,5 +1,5 @@
 @extends('layouts.tamplatecheckout')
-
+@php($i=1)
 @section('checkout')
 @foreach(Auth::user()->Keranjang()->get() as $k)
 {{-- {{dd($k)}} --}}
@@ -8,15 +8,15 @@
 				<div class="container">
 					 <h2>My Shopping Bag (3)</h2>
 						<script>$(document).ready(function(c) {
-							$('.close1').on('click', function(c){
-								$('.cart-header').fadeOut('slow', function(c){
-									$('.cart-header').remove();
+							$('.close{{$i}}').on('click', function(c){
+								$('.cart-{{$i}}').fadeOut('slow', function(c){
+									$('.cart-{{$i}}').remove();
 								});
 								});	  
 							});
 					   </script>
-					 <div class="cart-header">
-						 <div class="close1"> </div>
+					 <div class="cart-header cart-{{$i}}">
+						 <a href="{{ route('admin.checkout.delete',$k->id) }}"><div class="close{{$i}}"> </div></a>
 						 <div class="cart-sec simpleCart_shelfItem">
 								<div class="cart-item cyc">
 									 <img src="{{url($k->Produk->gambar)}}" class="img-responsive" alt="">
@@ -44,5 +44,6 @@
 			</div>
 	<!-- checkout -->	
 		</div>
+		@php($i++)
 	@endforeach
 @endsection		

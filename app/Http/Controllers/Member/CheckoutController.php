@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Member;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Keranjang;
-use App\Produk;
-use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
     public function index()
     {
-    	$keranjang = DB::table('keranjang')
-    	->join('produk', 'keranjang.id_produk', '=', 'produk.id')
-    	->select('keranjang.*','produk.*')
-    	->get();
-    	return view('layouts.checkout',['keranjang'=>$keranjang]);
+    	return view('layouts.checkout');
+    }
+    public function delete($id)
+    {
+    	Auth::user()->Keranjang()->findOrFail($id)->delete();
+    	return redirect(route('admin.checkout'));
     }
 }
