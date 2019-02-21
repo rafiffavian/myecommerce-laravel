@@ -1,5 +1,12 @@
 @extends('layouts.tamplatecheckout')
-@php($i=1)
+		@php
+			$origin = 153; 
+			$totalberat = 0;
+			$total = 0;	
+		$i=1;
+		@endphp
+
+
 @section('checkout')
 @foreach(Auth::user()->Keranjang()->get() as $k)
 {{-- {{dd($k)}} --}}
@@ -25,7 +32,8 @@
 								<h3>{{$k->Produk->nama_produk}} <span>Pickup time:</span></h3>
 								<ul class="qty">
 									<li><p>Berat:</p></li>
-									<li><p>{{$k->Produk->berat}}&nbsp;Kg</p></li><br><br>	
+									<li><p>{{$k->Produk->berat}}&nbsp;Kg</p></li><br><br>
+									
 									<li><p>Quantity:</p></li>
 									<li><p>{{$k->quantity}}</p></li>
 								</ul>
@@ -44,6 +52,18 @@
 			</div>
 	<!-- checkout -->	
 		</div>
-		@php($i++)
+		
+		@php
+				$i++;
+			$berat = $k->Produk->berat * $k->quantity;
+			$totalberat = $totalberat + $berat;
+
+			$harga = $k->Produk->harga * $k->quantity;
+			$total = $total + $harga;
+
+ 
+		@endphp
+
 	@endforeach
+		
 @endsection		

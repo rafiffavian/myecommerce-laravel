@@ -435,7 +435,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									                </div>
 									                <div class="form-group">
 									                  <label for="id_finance_type">Kota Tujuan</label>
-									                  <select name="provinsi_Tujuan" id="idjs" class="form-control">
+									                  <select name="provinsi_Tujuan" id="destination" class="form-control">
 									                   @foreach(App\Master_kota::all() as $item) 
 									                      <option value="{{$item->id}}">{{$item->nama}}</option>
 									                   @endforeach  
@@ -454,12 +454,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						                    <div class="tab-pane" role="tabpanel" id="step2">
 						                        <h3>Step two</h3><br><br>
 						                        <div class="form-group">
-									                  <label for="amount">Jasa Pengiriman</label> <!-- for di dalem lebel itu merujuk pada id -->
-									                  <input type="text" name="jasa_pengiriman" id="amount" class="form-control" required="" value="">
-									                </div>
-									                <div class="form-group">
-									                  <label for="amount">Jenis Layanan</label> <!-- for di dalem lebel itu merujuk pada id -->
-									                  <input type="text" name="jenis_layanan" id="amount" class="form-control" required="" value="">
+		
+		<select class="form-control" name="jasa_pengiriman" id="courier">
+							    	<option value="">Pilih Kurir</option>
+							    	<option selected value="jne">JNE</option>
+							    	<option value="pos">POS</option>
+							    	<option value="tiki">TIKI</option>
+							    </select>
 									                </div>
 									                <div class="form-group">
 									                  <label for="amount">Waktu Pengiriman</label> <!-- for di dalem lebel itu merujuk pada id -->
@@ -506,8 +507,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						                        <ul class="list-inline pull-right">
 						                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-						                            <li><button type="button" class="btn btn-default next-step">next</button></li>
+						                             <a href="javascript:tampil_data('data')" class="btn btn-primary"><h4>Cek Harga Kurir</h4></a>
 						                        </ul>
+
+						                       
 						                    </div>
 						                    <div class="tab-pane" role="tabpanel" id="complete">
 						                        <h3>Complete steps</h3>
@@ -517,6 +520,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Submit</button></li>
 						                        </ul>
 						                    </div>
+						                    
+						                    <div class="col-md-12">
+								<div id="hasil"></div>
+						</div>
+
+						<div class="col-md-6 col-md-offset-3">
+							<br><center><label><h3><b>Total Seluruh Tagihan</b></h3><br><h4>(Total Harga Barang + Biaya Pengiriman)</h4></label></center>
+							<input readonly type="text" id="totalharga" name="total_pembayaran" class="form-control input-lg text-center"  value="<?= $total_pembayaran=$total ?>"><br>
+						</div>
 						                    <div class="clearfix"></div>
 						                </div>
 						            </form>
@@ -589,6 +601,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="clearfix"></div>
 						</div>
 					</div>
+
+					<script>
+						function tampil_data(data){
+						      var w = <?= $origin ?>;
+						      var x = $('#destination').val();
+						      var y = <?= $totalberat ?>;
+						      var z = $('#courier').val();
+
+						      $.ajax({
+						          url: "{{ route('admin.checkout.getcost') }}",
+						          type: "GET", 
+						          data : {origin: w, destination: x, berat: y, courier: z},
+						          success: function (ajaxData){
+						              $('#tombol_export').show();
+						              $('#hasilReport').show();
+						              $("#hasil").html(ajaxData);}});};
+
+							$( document ).ready(function() {
+								var total = <?= $total_pembayaran=$total ?>;
+    						console.log( "ready!" );
+								$( "form" ).on('click', '.kurir' ,function(e) {
+									var harga = parseInt($('input[name=data_pengiriman]:checked').val().split('_')[0]);
+									$('#totalharga').val(total + harga);
+								});
+						});
+					</script>
 				<!--copy-->
 				<script>
 					$(document).ready(function () {

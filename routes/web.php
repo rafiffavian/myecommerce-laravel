@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/store/', 'Member\IndexController@store')->name('admin.store');
 	Route::get('/checkout/','Member\CheckoutController@index')->name('admin.checkout');
 	Route::get('/checkout/{id}/delete/','Member\CheckoutController@delete')->name('admin.checkout.delete');
+	Route::get('/checkout/getcost/','Member\CheckoutController@getCost')->name('admin.checkout.getcost');
 });	
 	
 

@@ -18,4 +18,22 @@ class CheckoutController extends Controller
     	Auth::user()->Keranjang()->findOrFail($id)->delete();
     	return redirect(route('admin.checkout'));
     }
+    public function getCost(Request $request)
+    {
+    	  $origin = $request->origin;
+          $destination = $request->destination;
+          $berat = $request->berat;
+          $courier = $request->courier;
+          
+          $dataku = array("origin" => $origin,
+          "destination" => $destination,
+          "berat" => $berat,
+          "courier" => $courier
+        ); 
+
+
+        return view('rajaongkir.getCostJson', [
+        	'data' => $dataku
+        ]);
+    }
 }
