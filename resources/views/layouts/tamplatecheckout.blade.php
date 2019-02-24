@@ -374,7 +374,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<section>
 					<div class="box box-primary">
 						<div class="box-body">
-					        <div class="wizard col-md-4" style="margin-left: 400px;">
+					        <div class="wizard col-md-12">
 					            <h1>Jquery Steps by mmm</h1>
 					            <div class="wizard-inner">
 					                <div class="connecting-line"></div>
