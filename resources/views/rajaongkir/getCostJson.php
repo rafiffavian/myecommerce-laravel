@@ -42,28 +42,28 @@ for ($k=0; $k < count($data['rajaongkir']['results']); $k++) {
 	<div title="<?php echo strtoupper($data['rajaongkir']['results'][$k]['name']);?>" style="padding:10px">
 	<table class="table table-bordered table-stripped">
 	<tr>
-	<th><p align="center">No.</p></th>
-	<th><p align="center">Layanan</p></th>
-	<th><p align="center">Waktu Pengiriman</p></th> 
-	<th><p align="center">Tarif</p></th>
-	<th><p align="center">Pilih Jenis Layanan</p></th>
+	<th><p align="center" style="color:black;">No.</p></th>
+	<th><p align="center" style="color:black;">Layanan</p></th>
+	<th><p align="center" style="color:black;">Waktu Pengiriman</p></th> 
+	<th><p align="center" style="color:black;">Tarif</p></th>
+	<th><p align="center" style="color:black;">Pilih Jenis Layanan</p></th>
 	</tr>
 	<?php
 	for ($l=0; $l < count($data['rajaongkir']['results'][$k]['costs']); $l++) {
 		?>
 		<tr>
-		<td align="center"><?php echo $l+1; 
+		<td style="color:black;" align="center"><?php echo $l+1; 
 
 
 
 		  ?></td>
 		<td align="center">
-		<div style="font:bold 16px Arial"><?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['service'];;?></div>
-		<div style="font:normal 11px Arial"><?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['description'];?></div>
+		<div style="font:bold 16px Arial;color:black;"><?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['service'];;?></div>
+		<div style="font:normal 11px Arial;color:black;"><?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['description'];?></div>
 		</td>
-		<td align="center">&nbsp;<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd'];?> days</td>
-		<td align="center"><?php echo number_format($data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value']);?></td>
-		<td align="center"><input type="radio" class="kurir" name="data_pengiriman" value="<?= $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value'] ."". $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd'] ."". $data['rajaongkir']['results'][$k]['costs'][$l]['description'] ?>"> <br></td>
+		<td align="center" style="font:normal 11px Arial;color:black;">&nbsp;<?php echo $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd'];?> days</td>
+		<td align="center" style="font:normal 11px Arial;color:black;"><?php echo number_format($data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value']);?></td>
+		<td align="center" style="font:normal 11px Arial;color:black;"><input type="radio" class="kurir" name="data_pengiriman" value="<?= $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['value'] ."". $data['rajaongkir']['results'][$k]['costs'][$l]['cost'][0]['etd'] ."". $data['rajaongkir']['results'][$k]['costs'][$l]['description'] ?>"> <br></td>
 		</tr>
 		<?php
 	}

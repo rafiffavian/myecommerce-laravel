@@ -527,7 +527,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 						<div class="col-md-6 col-md-offset-3">
 							<br><center><label><h3><b>Total Seluruh Tagihan</b></h3><br><h4>(Total Harga Barang + Biaya Pengiriman)</h4></label></center>
-							<input readonly type="text" id="totalharga" name="total_pembayaran" class="form-control input-lg text-center"  value="<?= $total_pembayaran=$total ?>"><br>
+							<hr style="border-color: black;border: 5px;">
+							<input readonly type="text" id="totalharga" name="total_pembayaran" class="form-control input-lg text-center"  value="Rp. <?= $total_pembayaran=$total ?>"><br>
 						</div>
 						                    <div class="clearfix"></div>
 						                </div>
